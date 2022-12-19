@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', function(){
         }, 1000);
 
         const direction =event.wheelDelta < 0 ? 1 : -1;
-
+        sroll(direction)
+        
+    })
+    function sroll(direction){
         if(direction===1){
             let isLastSection=currentSectionIndex===sections.length-1;
             if(isLastSection) return;
@@ -22,9 +25,12 @@ document.addEventListener('DOMContentLoaded', function(){
             if(firsSection) return;
         }
         currentSectionIndex=currentSectionIndex+direction;
-        sections[currentSectionIndex].scrollIntoView({
+        scrollToCurrentSection();
+    }
+    function scrollToCurrentSection(){
+       sections[currentSectionIndex].scrollIntoView({
             beahavior: 'smooth',
             block: "start",
-        })
-    })
+        }) 
+    }
 })
