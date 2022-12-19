@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let currentSectionIndex=0;
     document.addEventListener('mousewheel', function(event){
         const direction =event.wheelDelta < 0 ? 1 : -1;
+        
         if(direction===1){
             let isLastSection=currentSectionIndex===sections.length-1;
             if(isLastSection) return;
@@ -13,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function(){
             if(firsSection) return;
         }
         currentSectionIndex=currentSectionIndex+direction;
-        
+        sections[currentSectionIndex].scrollIntoView({
+            beahavior: 'smooth',
+            block: "start",
+        })
     })
 })
